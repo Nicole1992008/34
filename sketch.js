@@ -18,7 +18,7 @@ var bg_img;
 var food;
 var goatImg;
 
-var button,button2,button3;
+var button,button2;
 var goat;
 
 
@@ -34,7 +34,7 @@ function preload(){
 }
 
 function setup() {
-  createCanvas(400,400);
+  createCanvas(600,700);
 
   engine = Engine.create();
   world = engine.world;
@@ -54,7 +54,8 @@ function setup() {
 
    goat = createSprite(200,620,100,100);
   goat.scale = 0.2;
-  
+  //goat.addImage('goat');
+
   fruit = Bodies.circle(300,300,20);
   Matter.Composite.add(rope.body,fruit);
 
@@ -96,7 +97,11 @@ function draw()
     fruit = null;
   }
 
-  function drop()
+  
+  
+}
+
+function drop()
 {
   rope.break();
   fruit_con.dettach();
@@ -109,6 +114,3 @@ function drop2()
   fruit_con_2.dettach();
   fruit_con_2 = null;
 }
-  
-}
-
