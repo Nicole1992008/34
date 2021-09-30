@@ -52,9 +52,9 @@ function setup() {
    rope = new Rope(7,{x:120,y:90});
    rope2 = new Rope(7,{x:490,y:90});
 
-   goat = createSprite(200,620,100,100);
+   goat = Bodies.rect(300,300,50,50);
   goat.scale = 0.2;
-  //goat.addImage('goat');
+  goat.addImage('goatImg');
 
   fruit = Bodies.circle(300,300,20);
   Matter.Composite.add(rope.body,fruit);
