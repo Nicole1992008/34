@@ -24,10 +24,11 @@ var goat;
 
 
 
+
 function preload(){
 
   bg_img = loadImage('bg.jpg');
-  food = loadImage('apple.png');
+ food = loadImage('apple.png');
   goatImg = loadImage('goat.png');
   
   
@@ -52,8 +53,9 @@ function setup() {
    rope = new Rope(7,{x:120,y:90});
    rope2 = new Rope(7,{x:490,y:90});
 
-   goat = rect(300,300,50,50);
+   goat.rect(200,200,50,50);
   goat.scale = 0.2;
+  
   
 
   fruit = Bodies.circle(300,300,20);
@@ -90,7 +92,7 @@ function draw()
   drop2();
 
   Engine.update(engine);
-  drawSprites();
+  
 
   if(collide(fruit,goat,80)==true)
   {
@@ -103,6 +105,7 @@ function draw()
   fruit=null;
    }
   
+   drawSprites();
 
 }
 
@@ -120,17 +123,17 @@ function drop2()
   fruit_con_2 = null;
 }
 
-function collide(body,sprite,x)
-{
-  if(body!=null)
-        {
-         var d = dist(body.position.x,body.position.y,sprite.position.x,sprite.position.y);
-          if(d<=x)
-            {
-               return true; 
-            }
-            else{
-              return false;
-            }
-         }
-}
+//function collide(body,sprite,x)
+//{
+  //if(body!=null)
+        //{
+         //var d = dist(body.position.x,body.position.y,sprite.position.x, sprite.position.y);
+          //if(d<=x)
+            //{
+               //return true; 
+            //}
+            //else{
+              //return false;
+            //}
+         //}
+//}
