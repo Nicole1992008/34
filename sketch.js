@@ -29,7 +29,7 @@ function preload(){
 
   bg_img = loadImage('bg.jpg');
  food = loadImage('apple.png');
-  goatImg = loadImage('goat.png');
+  
   
   
 }
@@ -51,14 +51,16 @@ function setup() {
    button2.mouseClicked(drop2);
 
    rope = new Rope(7,{x:120,y:90});
-   rope2 = new Rope(7,{x:490,y:90});
+   rope2 = new Rope(7,{x:490,y:90});   
 
-   goat.rect(200,200,50,50);
-  goat.scale = 0.2;
-  
+   goat = createImg("goat.png")
+   goat.position(20,380);
+   goat.size(150,150);
+
+   
   
 
-  fruit = Bodies.circle(300,300,20);
+  fruit = Bodies.circle(300,300,10);
   Matter.Composite.add(rope.body,fruit);
 
   fruit_con = new Link(rope,fruit);
@@ -90,6 +92,7 @@ function draw()
 
   drop();
   drop2();
+  collide();
 
   Engine.update(engine);
   
@@ -123,17 +126,17 @@ function drop2()
   fruit_con_2 = null;
 }
 
-//function collide(body,sprite,x)
-//{
-  //if(body!=null)
-        //{
-         //var d = dist(body.position.x,body.position.y,sprite.position.x, sprite.position.y);
-          //if(d<=x)
-            //{
-               //return true; 
-            //}
-            //else{
-              //return false;
-            //}
-         //}
-//}
+function collide(body,sprite,x)
+{
+  if(body!=null)
+        {
+         var d = dist(body.position.x,body.position.y,sprite.position.x, sprite.position.y);
+          if(d<=x)
+            {
+               return true; 
+            }
+            else{
+              return false;
+            }
+         }
+}
