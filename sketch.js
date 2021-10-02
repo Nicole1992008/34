@@ -92,12 +92,16 @@ function draw()
 
   drop();
   drop2();
-  collide();
+  
 
   Engine.update(engine);
   
 
-  if(collide(fruit,goat,80)==true)
+  
+  
+   drawSprites();
+
+   if(collide(fruit,goat,80)==true)
   {
     World.remove(engine.world,fruit);
     fruit = null;
@@ -107,8 +111,6 @@ function draw()
   {
   fruit=null;
    }
-  
-   drawSprites();
 
 }
 
@@ -126,17 +128,4 @@ function drop2()
   fruit_con_2 = null;
 }
 
-function collide(body,sprite,x)
-{
-  if(body!=null)
-        {
-         var d = dist(body.position.x,body.position.y,sprite.position.x, sprite.position.y);
-          if(d<=x)
-            {
-               return true; 
-            }
-            else{
-              return false;
-            }
-         }
-}
+
