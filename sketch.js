@@ -9,7 +9,8 @@ const Composite = Matter.Composite;
 
 let engine;
 let world;
-var rope,fruit;
+var rope
+var fruit;
 var fruit_con;
 var fruit_con_2;
 
@@ -50,21 +51,23 @@ function setup() {
    button2.size(50,50);
    button2.mouseClicked(drop2);
 
-   rope = new Rope(7,{x:120,y:90});
-   rope2 = new Rope(7,{x:490,y:90});   
+   rope = new Rope(8,{x:100,y:380});
+   rope2 = new Rope(8,{x:450,y:380});  
+   
 
    goat = createImg("goat.png")
    goat.position(20,380);
-   goat.size(150,150);
-
-   
   
 
-  fruit = Bodies.circle(300,300,10);
-  Matter.Composite.add(rope.body,fruit);
+   
+   fruit_con = new Link(rope,fruit);
+   fruit_con_2 = new Link(rope2,fruit);
 
-  fruit_con = new Link(rope,fruit);
-  fruit_con_2 = new Link(rope2,fruit);
+  fruit = Bodies.circle(300,300,90);
+  Matter.Composite.add(rope.body,food);
+  Matter.Composite.add(rope2.body,food);
+
+  
 
   rectMode(CENTER);
   ellipseMode(RADIUS);
@@ -90,19 +93,17 @@ function draw()
   rope.show();
   rope2.show();
 
-  drop();
-  drop2();
   
 
   Engine.update(engine);
   
-
-  
   
    drawSprites();
 
+
    if(collide(fruit,goat,80)==true)
   {
+   
     World.remove(engine.world,fruit);
     fruit = null;
   }
@@ -112,7 +113,8 @@ function draw()
   fruit=null;
    }
 
-}
+  }
+
 
 function drop()
 {
@@ -127,5 +129,4 @@ function drop2()
   fruit_con_2.dettach();
   fruit_con_2 = null;
 }
-
 
