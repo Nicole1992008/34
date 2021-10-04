@@ -9,7 +9,7 @@ class Rope
   });
       
   this.pointA = pointA;
-  this.body = Composites.chain(rects, 0.1, 0, -0.6, 0, {stiffness: 0.2, length: 0.3, render: {type: 'line'}});
+  this.body = Composites.chain(rects, 0.1, 0, -0.6, 0, {stiffness: 0.1, length: 0.1, render: {type: 'line'}});
       
   World.add(engine.world, this.body);
   
@@ -25,7 +25,7 @@ class Rope
     }
     
     break()
-    { Matter.Composite.clear(this.rope,true);
+    { //Matter.Composite.clear(this.rope,true);
       this.body = null;
     }
     
